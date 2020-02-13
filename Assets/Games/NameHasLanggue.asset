@@ -1,0 +1,559 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e1c8cb7cd517744d8bfd87122ac19ed, type: 3}
+  m_Name: NameHasLanggue
+  m_EditorClassIdentifier: 
+  botNames:
+  - countryName: South Africa
+    countryCode: ZA
+    icon: {fileID: 21300000, guid: 4449232273fbf5146a09fd0198f35435, type: 3}
+    botName:
+    - Zandile Sibiya
+    - Teboho Kemp
+    - Kelebogile Mabuza
+    - Teboho Masuku
+    - Mandisa Mitchell
+    - Fiona Green
+    - Clinton Mabena
+    - Neville De Kock
+    - Unathi Buthelezi
+    - Edward Oosthuizen
+  - countryName: Saudi Arabica
+    countryCode: SA
+    icon: {fileID: 21300000, guid: 365661f6fa757b243b3991b01718ffaf, type: 3}
+    botName:
+    - Adham al-Ibrahim
+    - Nazeema al-Fahs
+    - Aasim el-Ally
+    - Bilaal el-Ghani
+    - Nakheel el-Ben
+    - Basheer el-Farhat
+    - Zufar el-Popal
+    - Faaiq el-Yamin
+    - Farhaan al-Rahman
+    - Akram al-Kaba
+  - countryName: America
+    countryCode: US
+    icon: {fileID: 21300000, guid: 11758fb8eda49d94fb29ed4ee7d0e064, type: 3}
+    botName:
+    - Brock
+    - Gale
+    - Gustavo
+    - Hank
+    - Hector
+    - Holly
+    - Jane
+    - Jesse
+    - Lydia
+    - Marie
+    - Mike
+    - Pete
+    - Saul
+    - Skyler
+    - Todd
+    - Walter
+    - Stacey
+    - Hanan
+    - Silver
+    - Malery
+    - Desi
+    - Abhishek
+    - Francisco
+    - Gabby
+    - Davine
+    - Larae
+    - Kaylah
+    - Tremel
+    - Madelyn
+    - Reilly
+    - Zubeyr
+    - Avaeh
+    - Agam
+    - Kenmari
+    - Sammi
+    - Lujain
+    - Korvin
+    - Benno
+    - Virgil
+    - Menelik
+  - countryName: Belarus
+    countryCode: BY
+    icon: {fileID: 21300000, guid: 57d74e31563431b47ad388553ed5270c, type: 3}
+    botName:
+    - Dzmitry Kupala
+    - Tsypryyan Harun
+    - Zasim Rahula
+    - Mikhal Novik
+    - Aleh Zablocki
+    - Yazep Karski
+    - Chaslava Bykava
+  - countryName: China
+    countryCode: CN
+    icon: {fileID: 21300000, guid: cd001ddacfb5ecd458b8b4b67c05bc07, type: 3}
+    botName:
+    - Lai Zhenya
+    - Liao Fen
+    - Wan Zhi
+    - Yun Ying
+    - Huang Yu
+    - Wen Xiang
+    - Qiao Liuxian
+    - Xiao Min
+    - Shi Yahui
+    - Yang Zhelan
+    - Wang Zhi
+    - Tang Ming
+    - Xie Yong
+    - Mo Zhong
+    - Liu Jingyi
+  - countryName: Hongkong
+    countryCode: HK
+    icon: {fileID: 21300000, guid: 4f6c0a86b066b3b4ab22d73d08fe8af7, type: 3}
+    botName:
+    - Chun Yeung
+    - Wang Meili
+    - Eric Wong
+  - countryName: Belgium
+    countryCode: BE
+    icon: {fileID: 21300000, guid: ac4367eb913a17946a0ed5a7f3fc340d, type: 3}
+    botName:
+    - Edouard Pattyn
+    - Stefan De Rijcke
+    - Emile Deboeck
+    - Bart Arijs
+    - Adriaan Leclercq
+    - Johannes Roesems
+    - Joanna De Meyer
+  - countryName: America
+    countryCode: US
+    icon: {fileID: 21300000, guid: 11758fb8eda49d94fb29ed4ee7d0e064, type: 3}
+    botName:
+    - Brock
+    - Gale
+    - Gustavo
+    - Hank
+    - Hector
+    - Holly
+    - Jane
+    - Jesse
+    - Lydia
+    - Marie
+    - Mike
+    - Pete
+    - Saul
+    - Skyler
+    - Todd
+    - Walter
+    - Stacey
+    - Hanan
+    - Silver
+    - Malery
+    - Desi
+    - Abhishek
+    - Francisco
+    - Gabby
+    - Davine
+    - Larae
+    - Kaylah
+    - Tremel
+    - Madelyn
+    - Reilly
+    - Zubeyr
+    - Avaeh
+    - Agam
+    - Kenmari
+    - Sammi
+    - Lujain
+    - Korvin
+    - Benno
+    - Virgil
+    - Menelik
+  - countryName: Estonia
+    countryCode: EE
+    icon: {fileID: 21300000, guid: 6427a202919996c42bc05bb56ff4dcfd, type: 3}
+    botName:
+    - Kristjan Mand
+    - Elmar Allik
+    - Kermo Keskkula
+    - Kaur Puusepp
+    - Merilin Kallaste
+  - countryName: Finland
+    countryCode: FI
+    icon: {fileID: 21300000, guid: 607fe514a34bc39429b4c7729899eea0, type: 3}
+    botName:
+    - Taneli Soininen
+    - Andreas Harju
+    - Huugo Koskinen
+    - Konsta Malinen
+    - Eevertti Markkula
+    - Ruut Simola
+    - Katri Markkula
+  - countryName: France
+    countryCode: FR
+    icon: {fileID: 21300000, guid: 2e2967b24e101b745bd28a516afc1df6, type: 3}
+    botName:
+    - Maxence Micheaux
+    - "Olivier Kl\xE9ber"
+    - Zacharie Ancel
+    - Jacques Gaubert
+    - Thierry Dutertre
+    - "R\xE9becca Garreau"
+    - Wilfrid Duchamp
+    - Tristan Bescond
+    - "\xC9lisa Geiger"
+    - Fabien Beaulne
+    - Dominique Cerf
+    - Dylan Piaget
+    - Harmonie Jacquier
+    - Xavier Valluy
+    - "Jean-No\xEBl Beaulieu"
+  - countryName: Germany
+    countryCode: DE
+    icon: {fileID: 21300000, guid: e167a5f4fa135ad438ca40d27387b088, type: 3}
+    botName:
+    - Helmut Heidrich
+    - Caspar Ungers
+    - Ingo Dahlke
+    - Augustin Bauschinger
+    - Ronald Ochsner
+    - Irina Teschner
+    - Kristin Falkenberg
+  - countryName: Israel
+    countryCode: IL
+    icon: {fileID: 21300000, guid: c7d3e4783dc3d0a48b5f14ec707cb7ad, type: 3}
+    botName:
+    - Yahav
+    - Shizaf
+    - Refael
+    - Nimrod
+    - Mordechai
+    - Joliano
+    - Mariane
+  - countryName: Iceland
+    countryCode: IS
+    icon: {fileID: 21300000, guid: 1a2ae49e8b606e345894e16e06787bce, type: 3}
+    botName:
+    - Haraldur
+    - Ingimundur
+    - Kjartan
+    - Shaft
+    - Hjordis
+  - countryName: Indonesia
+    countryCode: ID
+    icon: {fileID: 21300000, guid: 3097f8d089635614d81a8d2fc97409d7, type: 3}
+    botName:
+    - Wendi Pengfei
+    - Rein Teterissa
+    - Josiah Lumbanpea
+    - Michael Sihite
+    - Nyoto Heng
+    - Tandiono Qiang
+    - Eliphaz Lumbangaol
+    - Judas Matanari
+    - Hur Penggarun
+    - Abram Zega
+    - Serah Lumbanraja
+    - Marijn Octovian
+  - countryName: Italy
+    countryCode: IT
+    icon: {fileID: 21300000, guid: 1b4b113e406e28544953c56a4590bc53, type: 3}
+    botName:
+    - Adone Parlapiano
+    - Tulliano Galioto
+    - Nicezio Lo Verde
+    - Valfrido Crivello
+    - Paola Molinari
+    - Silvio Ianniello
+    - Aniello Circelli
+    - Ildegarda Moreschi
+    - Desiderio Sofia
+    - Amelio Pantano
+  - countryName: Japan
+    countryCode: JP
+    icon: {fileID: 21300000, guid: 7933e1a380670694bbbf85d236a2ae78, type: 3}
+    botName:
+    - Kawasaki
+    - Miura
+    - Yanagita
+    - Toshikuni
+    - Hakuseki
+    - Saiki
+    - Satoshi
+    - Yukio
+    - Rkuemon
+    - Hirai
+    - Yoshitora
+    - Kenzaburo
+    - Rikyu
+    - Akinori
+    - Kiichi
+  - countryName: South Korea
+    countryCode: KR
+    icon: {fileID: 21300000, guid: 35966971804cb114b8fd15909c2ad195, type: 3}
+    botName:
+    - Yongsun
+    - Eun-Hee
+    - Dae-Ho
+    - Kwang Soo
+    - Changmin
+    - Cheon Ji
+    - Ju Hyun
+    - Jiwoo
+    - Dae-Hyun
+    - Han Yoon
+    - Min Kyung
+    - Daewon
+    - Ye Iseul
+    - Ji Eun
+    - Mun-Hee
+  - countryName: Latvia
+    countryCode: LV
+    icon: {fileID: 21300000, guid: 8491da34a6281b8478bf13d849d09fbe, type: 3}
+    botName:
+    - Edvards
+    - Herberts
+    - Ernests
+    - Rainers
+    - Viestards
+  - countryName: Lithuania
+    countryCode: LT
+    icon: {fileID: 21300000, guid: a9ab999fd82f3db45820536242ba13f1, type: 3}
+    botName:
+    - Ramojus
+    - Deividas
+    - Darius
+    - Domantas
+    - Mirka
+  - countryName: Norway
+    countryCode: NO
+    icon: {fileID: 21300000, guid: b31d21091da221442868f6c2f2d0514d, type: 3}
+    botName:
+    - Dan Ingebretson
+    - Aage Preus
+    - Sveinung England
+    - Adrian Valle
+    - Christian Espe
+    - Johanna Dalby
+    - Live Winjum
+  - countryName: Poland
+    countryCode: PL
+    icon: {fileID: 21300000, guid: a29e17b72364233419e20f0f1f5e829c, type: 3}
+    botName:
+    - Hipolit Strzalkowski
+    - Cezary Perkoski
+    - Agata Polega
+    - Janusz Paliwoda
+    - Hugo Migdal
+    - "Wito\u0142d Helminski"
+    - Patryk Placek
+    - Roman Kania
+    - Teodor Zydowo
+    - Dorota Grzywacz
+  - countryName: Portugal
+    countryCode: PT
+    icon: {fileID: 21300000, guid: 6609ef19cee8634418504ec3d6baf738, type: 3}
+    botName:
+    - "Lu\xEDs Alves"
+    - Paula Cardoso
+    - "At\xEDlio Cruz"
+    - "D\xE9lia Silva"
+    - Nicolau Coelho
+    - "T\xFAlio Brito"
+    - Nilda Cabral
+    - "In\xE1cio Barbosa"
+    - "Pl\xE1cido Resendes"
+    - "Herm\xEDnia Queiros"
+    - Edgar Mendes
+    - Isis Sousa
+    - Afonso Batista
+    - Raimundo Passos
+    - Kevin Saldanha
+  - countryName: Romania
+    countryCode: RO
+    icon: {fileID: 21300000, guid: a9378908ea766934f99a4609589c4fa8, type: 3}
+    botName:
+    - Valeria Mihaila
+    - Violeta Tomescu
+    - Flaviu Cristescu
+    - Sabin Grecu
+    - Margareta Musat
+    - Beatrice Marinescu
+    - Agnos Damian
+  - countryName: Slovakia
+    countryCode: SK
+    icon: {fileID: 21300000, guid: 7a69d973b898d3448a1a785af6ab96a2, type: 3}
+    botName:
+    - Eduard Biely
+    - Vavrinec Chren
+    - Samuel Nedved
+    - Klement Nedved
+    - Miroslav Malina
+    - Dalibor Biskup
+    - Kamil Kostra
+  - countryName: Slovenia
+    countryCode: SI
+    icon: {fileID: 21300000, guid: 9e83c9dad49590d4c992944f70709be0, type: 3}
+    botName:
+    - Martin
+    - Gabrijel
+    - Matjaz
+    - Klemen
+    - Doroteja
+  - countryName: Sweden
+    countryCode: SE
+    icon: {fileID: 21300000, guid: 0e070d05e6210ff4d88014a9d492693b, type: 3}
+    botName:
+    - Alvin Aalberg
+    - Olle Norberg
+    - Bo Lindholm
+    - Isak Bergman
+    - Tron Dahlquist
+    - Velam Norberg
+    - Malin Gustafson
+  - countryName: Thailand
+    countryCode: TH
+    icon: {fileID: 21300000, guid: ae35319a3334e6a4c979fd81558c49fc, type: 3}
+    botName:
+    - Traikun Kosaisook
+    - Pairat Akradej
+    - Nodthakorn Suttirat
+    - Songpob Chalerm
+    - Khem Vipavakit
+    - Sunatda Kattiya
+    - Panat Chadee
+    - Paitoon Akradej
+    - Kusum Kaouthai
+    - Ornanong Chao
+  - countryName: Turkey
+    countryCode: TR
+    icon: {fileID: 21300000, guid: 0addc2a112c53f74d987ccc3881c4298, type: 3}
+    botName:
+    - Altintop Kuru
+    - Kutalmis Akkaya
+    - Aytolun Ata
+    - Erbil Diyadin
+    - Ertekin Birdal
+    - Melis Guven
+    - Taha Sevim
+    - Aytuna Uslu
+    - Yumus Renda
+    - Atmaca Bayar
+    - Gurhan Namli
+    - Cengiz Cimen
+    - Alpay Aydemir
+    - Sever Tanyu
+    - Ilkut Erkoc
+  - countryName: Ukraine
+    countryCode: UA
+    icon: {fileID: 21300000, guid: de37e125d65409842aa68ad2b7733262, type: 3}
+    botName:
+    - Panas Adamovych
+    - Zynovij Olehovych
+    - Fedir Havrylovych
+    - Stepan Ivanovych
+    - Rayisa Yuriyivna
+    - Yurij Panasovych
+    - Ivan Mykytovych
+    - Natalya Viktorivna
+    - Denys Fedirovych
+    - Andrij Savych
+  - countryName: Viet Nam
+    countryCode: VN
+    icon: {fileID: 21300000, guid: c5799fd86769c254cb156803517e46ae, type: 3}
+    botName:
+    - Minh Long
+    - Anh Minh
+    - The Quyen
+    - Dat Chinh
+    - Ngoc Cuong
+    - Hoang Vy
+    - Linh Linh
+    - Thanh Tung
+    - Vo Tong
+    - Vi Dai
+    - Van Van
+    - Ngoc Hung
+    - Dinh Lam
+  - countryName: China
+    countryCode: CN
+    icon: {fileID: 21300000, guid: cd001ddacfb5ecd458b8b4b67c05bc07, type: 3}
+    botName:
+    - Lai Zhenya
+    - Liao Fen
+    - Wan Zhi
+    - Yun Ying
+    - Huang Yu
+    - Wen Xiang
+    - Qiao Liuxian
+    - Xiao Min
+    - Shi Yahui
+    - Yang Zhelan
+    - Wang Zhi
+    - Tang Ming
+    - Xie Yong
+    - Mo Zhong
+    - Liu Jingyi
+  - countryName: America
+    countryCode: US
+    icon: {fileID: 21300000, guid: 11758fb8eda49d94fb29ed4ee7d0e064, type: 3}
+    botName:
+    - Brock
+    - Gale
+    - Gustavo
+    - Hank
+    - Hector
+    - Holly
+    - Jane
+    - Jesse
+    - Lydia
+    - Marie
+    - Mike
+    - Pete
+    - Saul
+    - Skyler
+    - Todd
+    - Walter
+    - Stacey
+    - Hanan
+    - Silver
+    - Malery
+    - Desi
+    - Abhishek
+    - Francisco
+    - Gabby
+    - Davine
+    - Larae
+    - Kaylah
+    - Tremel
+    - Madelyn
+    - Reilly
+    - Zubeyr
+    - Avaeh
+    - Agam
+    - Kenmari
+    - Sammi
+    - Lujain
+    - Korvin
+    - Benno
+    - Virgil
+    - Menelik
+  - countryName: Hungary
+    countryCode: HU
+    icon: {fileID: 21300000, guid: 06857665a71539c4da4b572a59d067b0, type: 3}
+    botName:
+    - Fazekas Marcell
+    - Veres Szabolcs
+    - Katona Ferenc
+    - Barna Csaba
+    - Nagy Bertalan
+    - Szalai Evelin
+    - Balog Szilvia
