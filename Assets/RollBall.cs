@@ -495,10 +495,28 @@ void Start()
     {
         yield return new WaitForSeconds(waitTime);
         isGround = Physics.Raycast(new Ray(transform.position, -Vector3.up), CheckGround);
-        
+        if (!isGround)
+        {
+            if (!dead)
+            {
+                if (isTargetBy != null)
+                {
+                    dead = true;
+                    isTargetBy.GetComponent<Enemy>().Incre_Level(LevelBall);
+                    // LevelBall += isTargetBy.GetComponent<Enemy>().LevelBall;
+
+
+                  //  GamePlayerCtrl.Instance.Incre_Radius();
+
+                    isTargetBy = null;
+                }
+            }
+
+        }
+
 
     }
-
+    public bool dead = false;
     public float cachedReal = 0;
     public Vector3 Process_Point(Vector3 point)
     {
