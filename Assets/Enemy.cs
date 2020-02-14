@@ -101,6 +101,7 @@ public class Enemy : MonoBehaviour
     //Local Variable
     bool Stop = false;
     bool isDead = false;
+    public float speedIncre;
     //Effect
     public GameObject ParticeSmoke;
     public float CoolTimeSmoke = 1;
@@ -113,19 +114,20 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        speedIncre = Speed;
          LevelBall = 1;
-        if (DataMananger.MapSelec == 3 || DataMananger.MapSelec == 4)
+        if (DataMananger.MapSelec == 2)
         {
-            Radius =  Random.Range(0.5f,1f);
+            Radius =  Random.Range(1f , 1.5f);
             maxVec = 10;
           
-            maxVec = 15;
+          
         }
         else
         {
-            Radius = Random.Range(0.5f, 1.5f);
-           
-            maxVec = 20;
+            Radius = Random.Range(0.75f, 2f);
+                  
+            maxVec = 15;
         }
         if (Random.Range(0, 6) != 1)
         {
@@ -133,6 +135,11 @@ public class Enemy : MonoBehaviour
             index_Blood_War = Random.Range(1, 10);
             index_Dodge = Random.Range(1, 3);
 
+        }
+        if (Random.Range(0, 3) == 0)
+        {
+            index_Blood_War = 2;
+            index_Dodge = 1;
         }
         else
         {
@@ -207,24 +214,24 @@ public class Enemy : MonoBehaviour
                 if (!isDead)
                 {
                     isDead = true;
-                    GamePlayerCtrl.Instance.Incre_Radius();
+                  
                     if (isTargetBy != null)
                     {
                         if (isTargetBy.tag == "Player")
                         {
                             DataMananger.Instance.PlayAudio("levelup", Vector3.zero);
-                           RollBall.Coin += 25;
+                            RollBall.Coin += 25;
                             DataMananger.Instance.Add_Coin(25);
                             var a = Instantiate(SpawnEffect.Instance.getEffectName("Score"), null);
                             a.GetComponent<Destroy>().SetPosText(transform.position);
 
                         }
                        
-                            isTargetBy.GetComponent<Enemy>().Incre_Level(isTargetBy.GetComponent<Enemy>().LevelBall);
-                            LevelBall += isTargetBy.GetComponent<Enemy>().LevelBall;
-                        
-                      
-                       
+                            isTargetBy.GetComponent<Enemy>().Incre_Level(LevelBall);
+                           // LevelBall += isTargetBy.GetComponent<Enemy>().LevelBall;
+
+                        GamePlayerCtrl.Instance.Incre_Radius();
+
                         isTargetBy = null;
                        
                     }
@@ -334,7 +341,7 @@ public class Enemy : MonoBehaviour
         {
             // Try it   
             Process_Status();
-         
+            
           
 
 
@@ -421,7 +428,7 @@ public class Enemy : MonoBehaviour
                       
 
                    // ICanNotDead();
-                    body.AddForce(DirectMove*Speed*Time.deltaTime*2*0.85f,ForceModeWhenMove);
+                    body.AddForce(DirectMove*Speed*Time.deltaTime*2,ForceModeWhenMove);
 
 
 
@@ -442,7 +449,7 @@ public class Enemy : MonoBehaviour
                 else
                 {
                     //     Debug.Log("Chance");
-                    body.velocity = body.velocity - Time.deltaTime * body.velocity * MassChance;
+                     body.velocity = body.velocity - Time.deltaTime * body.velocity * MassChance;
                     // body.AddForce(-DirectMove.normalized * Mass);
 
                 }
@@ -555,9 +562,21 @@ public class Enemy : MonoBehaviour
         float ForcePlayer = enemy.GetComponent<Enemy>().Get_Force();
        
         float BoundPlayer = enemy.GetComponent<Enemy>().Bonnd;
-     
-      
+
+        //Start
+       
         float ForceBack = 0;
+        if (GamePlayerCtrl.Instance.Ball_Survie() <= 3)
+        {
+            StopCoroutine(RestoreIndex(1));
+            GamePlayerCtrl.Instance.Incre_Radius();
+        }
+        else
+        {
+            index_Dodge--;
+            index_Dodge = (int)Mathf.Clamp(index_Dodge, 0, Mathf.Infinity);
+            StartCoroutine(RestoreIndex(Random.Range(0.2f, 0.8f)));
+        }
         if (!isMoveBack)
         {
             ForceBack = (ForcePlayer + Get_Force());
@@ -607,6 +626,11 @@ public class Enemy : MonoBehaviour
         }
         }
    
+    public IEnumerator RestoreIndex(float time)
+    {
+        yield return new WaitForSeconds(time);
+        index_Dodge = Random.Range(1, 12);
+    }
     
     public void AddForce(Vector3 Force,ForceMode Force_Mode,float ForceInteraction)
     {
@@ -614,7 +638,16 @@ public class Enemy : MonoBehaviour
         isMoveBack = true;
      //   body.velocity = Vector3.zero;
         this.ForceIntertion = ForceInteraction;
-        body.AddForce(Vector3.ClampMagnitude(Force,maxVec),ForceModeWhenInteraction);
+        if (Vector3.SqrMagnitude(Force) > maxVec)
+        {
+            body.velocity =  Force.normalized* maxVec;
+
+        }
+        else
+        {
+            body.AddForce(Vector3.ClampMagnitude(Force, maxVec), ForceModeWhenInteraction);
+        }
+    
       
 
     }
@@ -904,7 +937,7 @@ public class Enemy : MonoBehaviour
 
 
                         Player[] dodgePlayer;
-                        if (GetEnemyInRadius(Radius / 2, transform.position, transform.up, out dodgePlayer) != 0)
+                        if (GetEnemyInRadius(Radius*1.6f, transform.position, transform.up, out dodgePlayer) != 0)
                         {
                             PlayerDodge = PlayerStrongerst(dodgePlayer);
 
@@ -1053,8 +1086,7 @@ public class Enemy : MonoBehaviour
 
 
 
-                DirectMove = (new Vector3(Target.transform.position.x, 0, Target.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z))*0.75f;
-
+                DirectMove = (new Vector3(Target.transform.position.x, 0, Target.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z));
             }
         }
         else
@@ -1424,7 +1456,16 @@ public class Enemy : MonoBehaviour
                 Score[i] = (DistanceToItsSelf + DistanceNearLimit)*index_Power;
 
             }
-            int indexMin = getIndexMin(Score);
+            int indexMin = 0;
+            if (Random.Range(0, 2) != 0){
+                indexMin = getTargetAttack(Score);
+            }
+            else
+            {
+                indexMin = getIndexMin(Score);
+            }
+          
+           
             return player[indexMin];
         }
         else
@@ -1691,6 +1732,21 @@ public class Enemy : MonoBehaviour
         }
         return index;
     }
+    public int getTargetAttack(float[] score)
+    {
+        int index = 0;
+        float min = Mathf.Infinity;
+        for (int i = 0; i < score.Length; i++)
+        {
+            if (score[i] < min)
+            {
+                index = i;
+                min = score[i];
+            }
+        }
+
+        return Random.Range(0, score.Length);
+    }
     public  float[] GetArrayMax(float[] Score ,int number)
     {
         float[] ScoreCopy = new float[8];
@@ -1756,27 +1812,52 @@ public class Enemy : MonoBehaviour
     {
         Destroy(gameObject);
     }
+    public IEnumerator Incre_Size(Vector3 pos,float Speed)
+    {
+        while (transform.localScale != pos)
+        {
+            transform.localScale = Vector3.MoveTowards(transform.localScale, pos,Speed*Time.deltaTime);
+            yield return new WaitForSeconds(0);
+        }
+    }
    
     public void Incre_Level(float level_Ball)
     {
         Debug.Log(" LEVEL UP ");
-           
-    
-            transform.localScale +=  Vector3.one*level_Ball;
+        LevelBall += level_Ball;
+        if (GamePlayerCtrl.Instance.Ball_Survie() <= 3)
+        {
+            GamePlayerCtrl.Instance.Incre_Radius();
+        }
+        else
+        {
+            index_Blood_War++;
+            if (index_Blood_War <= 11)
+            {
+                index_Blood_War = Random.Range(0, 10);
+            }
+        }
+            Vector3 scale = transform.localScale;
+            scale += Vector3.one * level_Ball;
+            transform.localScale = scale;
             Vector3 pos = transform.position;
-            pos.y += 0.2f *level_Ball;
+         //   StopCoroutine(Incre_Size(scale, 0.01f));
+            StartCoroutine(Incre_Size(scale,1));
+            pos.y += 0.3f *level_Ball;
+            transform.position = pos;
             weight += 1 * level_Ball;
             if (DataMananger.MapSelec != 3 || DataMananger.MapSelec != 4)
             {
+            
                Radius += 0.8f;
             }
             Mass += 1f * level_Ball;
-            Speed -= 0.5f * level_Ball;
-    
-            Speed = Mathf.Clamp(Speed, 3, Mathf.Infinity);
+            Speed -= 3f * level_Ball;
+            speedIncre -= 3*level_Ball;
+             Speed = Mathf.Clamp(Speed, 3, Mathf.Infinity);
             Bound += 1f * level_Ball;
-            transform.position = pos;
-            level += 0.25f * level_Ball;
+       
+            level += 0.15f * level_Ball;
             MassChance +=5f * level_Ball;
             
            SizeSmoke += 0.2f * level_Ball;

@@ -103,16 +103,67 @@ public int CountPlayer()
     {
         for (int i = 0; i < player.Length; i++)
         {
+            int survie = 0;
             try
             {
-                if (Random.Range(0, 2) != 1)
+                if (player[i].GetComponent<Enemy>().tag == "Player")
                 {
+                    continue;
+                }
+               
                     if (DataMananger.MapSelec != 3 || DataMananger.MapSelec != 4)
                     {
-                        player[i].GetComponent<Enemy>().Radius += Random.Range(0.1f, 0.5f);
+                    if (Random.Range(0, 2) == 0)
+                    {
+                        if (player[i].GetComponent<Enemy>().isGround)
+                        {
+                            if (player[i].GetComponent<Enemy>().tag != "Player")
+                            survie++;
+                            player[i].GetComponent<Enemy>().Radius += Random.Range(0.2f, 0.7f);
+                            if (player[i].GetComponent<Enemy>().LevelBall == 1)
+                            {
+                                if (Random.Range(0, 2) == 0)
+                                {
+                                    player[i].GetComponent<Enemy>().Speed += Random.Range(3,10);
+                                    player[i].GetComponent<Enemy>().Speed =  (Mathf.Clamp(player[i].GetComponent<Enemy>().Speed,1,20));
+                                }
+
+                                if (Random.Range(0, 2) != 0)
+                                {
+
+                                    player[i].GetComponent<Enemy>().Radius += 0.35f;
+                                    player[i].GetComponent<Enemy>().index_Blood_War += Random.Range(1, 3);
+                                }
+
+                            }
+                            else
+                            {
+                                player[i].GetComponent<Enemy>().Speed = player[i].GetComponent<Enemy>().speedIncre;
+                            }
+                        }
+                      
+                    }
+                       
+                        if(Ball_Survie() <= 3)
+                        {
+                            if (Random.Range(0, 3) != 0)
+                            {
+                                player[i].GetComponent<Enemy>().index_Blood_War = Random.Range(8, 10);
+                                player[i].GetComponent<Enemy>().index_Dodge = Random.Range(0,3);
+
+                            }
+                            else
+                            {
+                                player[i].GetComponent<Enemy>().index_Blood_War = 2;
+                                player[i].GetComponent<Enemy>().index_Dodge = 1;
+                            }
+                        
+                        }
+                      
+                      
                     }
                    
-                }
+                
                
             }
             catch (System.Exception)
@@ -124,6 +175,20 @@ public int CountPlayer()
             
         }
         Debug.Log("5");
+    }
+    public int Ball_Survie()
+    {
+        int survie = 0;
+        for (int i = 0; i < player.Length; i++)
+        {
+            if (player[i].GetComponent<Enemy>().isGround)
+            {
+                if (player[i].GetComponent<Enemy>().tag != "Player")
+                    survie++;
+            }
+         
+        }
+        return survie;
     }
     private void FixedUpdate()
     {

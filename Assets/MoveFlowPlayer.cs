@@ -27,7 +27,7 @@ public class MoveFlowPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pos = new Vector3(0.15f,25,-5);
+        pos = new Vector3(0.15f,25, -1.83f);
         GamePlayerCtrl.Instance.Event_Over_Game += Reset;
     }
     public void Reset()
@@ -45,7 +45,7 @@ public class MoveFlowPlayer : MonoBehaviour
             {
 
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - offset), Speed * Time.deltaTime);
-                Camera.main.fieldOfView = Mathf.MoveTowards(Camera.main.fieldOfView, 30f, Time.deltaTime * 50);
+                Camera.main.fieldOfView = Mathf.MoveTowards(Camera.main.fieldOfView, 45f, Time.deltaTime * 50);
             }
             else
             {
